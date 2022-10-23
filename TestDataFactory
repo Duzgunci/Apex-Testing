@@ -1,0 +1,32 @@
+@isTest
+public class TestDataFactory {
+    
+    public static List<Account> createAccounts(Integer num){
+        List<Account> acct = new List<Account>();
+
+        for(Integer i = 0; i<num; i++){
+
+            Account a = new Account();
+            a.Name = 'Test ' + i;
+            acct.add(a);
+        }
+
+        insert acct;
+        return acct;
+    }
+
+    public static List<Contact> createContacts(Integer num){
+        List<Contact> conts = new List<Contact>();
+
+        for(Integer i = 0; i<num; i++){
+
+            Contact c = new Contact();
+            c.Name = 'Test ' + i;
+            conts.add(c);
+        }
+
+        insert conts;
+        return conts;
+
+    }
+}
