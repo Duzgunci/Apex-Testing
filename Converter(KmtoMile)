@@ -1,0 +1,26 @@
+public class Converter {
+    public static Decimal kmtomile(Decimal km) {
+        decimal mile = km * 0.625;
+        return mile; 
+    }
+    public static Decimal miletokm(Decimal mile) {
+        decimal km = mile * 1.6;
+        return km; 
+    }
+}
+@istest 
+public class CoverterTest {
+    @istest
+    public static void testkmtomile() {
+        decimal result = Converter.kmtomile(100);
+        system.assertEquals(62.5, result);
+
+    }
+    @istest
+    public static void testmiletokm() {
+        decimal result = Converter.miletokm(70);
+        system.assertEquals(112, result);
+
+    }
+}
+
