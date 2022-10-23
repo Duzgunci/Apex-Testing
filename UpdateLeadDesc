@@ -1,0 +1,38 @@
+public class UpdateDescription {
+    public static void UpdateLeadDesc() {
+
+        List<Lead> lds = [SELECT Description FROM Lead ];
+        List<Lead> newLeads = new List<Lead>();
+
+        for (Lead a : lds) {
+            a.Description = 'This lead\'s description updated to apply bulk apex test';
+            newLeads.add(a);           
+        }
+        update newLeads;
+     }
+}
+
+@istest 
+public class UpdateDescriptionTest {
+    @istest 
+    public static void UpdateLeadDesc() {
+    List<Lead> lds = new List<Lead>();
+
+    for (Integer i = 1; i < 5; i++) {
+        Lead a = new Lead();
+        a.LastName = 'TestLead' + i;
+        a.Company = 'TestCompany' + i;
+        lds.add(a);        
+    }
+    insert lds;
+    
+
+    UpdateDescription.UpdateLeadDesc();
+    List<Lead> newLeads = [SELECT Description FROM Lead];
+    for (Lead a : newLeads) {
+        System.assertEquals('This lead\'s description updated to apply bulk apex test', a.Description);       
+    }
+    system.assertEquals(4, newLeads.size());
+      
+}
+}
