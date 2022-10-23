@@ -1,0 +1,28 @@
+-------*******CreateOpps  Class **********-----------
+
+public  class CreateOpps {
+@TestVisible
+    private static void newOpps() {
+        Opportunity o = new Opportunity();
+        o.Name = 'New Opportunity';
+        o.StageName='Qualification';
+        o.CloseDate = Date.newInstance(2022,12,12);// 2022/12/12
+        insert o;
+    }
+}
+
+Test
+@istest
+public  class CreateOpps_Test {
+    @istest
+    public static void newOpps_Test() {
+        CreateOpps.newOpps();
+
+        Opportunity o = [SELECT Id, Name, StageName FROM Opportunity
+        WHERE Name= 'New Opportunity'];
+
+        system.assertEquals('New Opportunity', o.Name);
+        system.assertEquals('Qualification', o.StageName);
+
+    }
+}
