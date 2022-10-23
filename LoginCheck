@@ -1,0 +1,70 @@
+public class LoginCheck {
+    
+ //If the worker enters the correct username and the correct password, we will show “You logged in successfully”   
+    public static void CheckLogin(string username, string password){
+        
+        string correctUsername = 'smaple';
+        string correctPassword = 'SaraMaple806';
+        
+        if(username == correctUsername && password == correctPassword){
+         system.debug('You logged in successfully');
+		            
+        }        
+        if(username == correctUsername && password <> correctPassword){
+          system.debug('You entered a wrong password');  
+        }
+        if(username <> correctUsername && password == correctPassword){
+          system.debug('You entered a wrong username');  
+        }
+        if(username <> correctUsername && password <> correctPassword){
+          system.debug('Your both username and password are wrong');  
+        }
+    } 
+}
+
+Solution: public class loginScreen {
+    public static string loginScreenMethod(string Username, Integer password) {
+        string loginMessage = '';
+
+        if (username == 'Alyssa26' && password == 1725){
+            loginMessage = 'You logged in successfully';
+        }
+        
+        else if (username == 'Alyssa26' && password != 1725){
+            loginMessage = 'You entered a wrong password';
+        }
+        
+        else if (username != 'Alyssa26' && password == 1725){
+        loginMessage = 'You entered a wrong username';
+         }
+
+        else {
+            loginMessage = 'Your both username and password are wrong';
+             }
+        return loginMessage;
+        }
+}
+
+@istest
+public class loginScreenTest {
+    @istest
+    public static void testA() {
+        string result = loginScreen.loginScreenMethod('Alyssa26', 1725);
+        system.assertEquals('You logged in successfully', result);
+    }
+    @istest
+    public static void testB() {
+        string result = loginScreen.loginScreenMethod('Alyssa26', 2023);
+        system.assertEquals('You entered a wrong password', result);
+    }
+    @istest
+    public static void testC() {
+        string result = loginScreen.loginScreenMethod('Bayram22', 1725);
+        system.assertEquals('You entered a wrong username', result);
+    }
+    @istest
+    public static void testD() {
+        string result = loginScreen.loginScreenMethod('Jansaya22', 2023);
+        system.assertEquals('Your both username and password are wrong', result);
+    }
+}
