@@ -30,3 +30,22 @@ public class TestDataFactory {
 
     }
 }
+
+-----------***************Mytest class:***********----------------------------
+
+@istest
+public class MyTestClass {
+    @istest
+    public static void factoryTest() {
+        // create 3 account records
+        List<Account> accs = TestDataFactory.createAccounts(100);
+
+        System.assertEquals(100, accs.size());
+
+
+    }
+}
+
+
+
+
