@@ -1,0 +1,35 @@
+public class BodyMass {
+
+    public static Decimal calculateBMI(Decimal kg, Decimal ht) {
+        return kg / (ht * ht);
+    }
+
+    public static String nameUpperCase(String firstName, String lastName) {
+        String fullName = firstName + ' ' + lastName;
+        return fullName.toUpperCase();
+    }
+}
+
+@istest
+public class BodyMass_Test {
+    @istest
+    public static void calculateBMI_TEST1() {
+        decimal result = BodyMass.calculateBMI(97,2);
+        system.assertEquals(24.25, result);
+    }
+
+    public static void calculateBMI_TEST2() {
+        decimal result = BodyMass.calculateBMI(97,-2);
+        system.assertEquals(24.25, result);
+    }
+
+    public static void calculateBMI_TEST3() {
+        decimal result = BodyMass.calculateBMI(97,1);
+        system.assertEquals(97, result);
+    }
+
+    public static void nameUpperCase_TEST4() {
+        String result = BodyMass.nameUpperCase('Ethan','Test');
+        system.assertEquals('ETHAN TEST', result, 'Full name is not correct!');
+    }
+}
