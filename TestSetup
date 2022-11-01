@@ -1,0 +1,28 @@
+@istest 
+
+public  class testMethodNew {
+
+    @TestSetup
+    static void makeData(){
+        Account a = new Account (Name='Test');
+        insert a;
+
+        Contact c= new Contact(LastName= 'New Test');
+        insert c;
+    }
+@istest 
+    public static void methodOne(){
+       Account b = new Account (Name= 'MethodOne Account');
+       insert b;
+
+       list <Account> accList = [SELECT Id FROM Account];
+       system.assertEquals(2, accList.size());
+
+    }
+@istest
+    public static void methodTwo(){
+    list <Account> accs= [SELECT Id FROM Account];
+        system.assertEquals(1, accs.size());
+
+     }
+}
