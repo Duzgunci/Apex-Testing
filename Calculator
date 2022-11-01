@@ -1,0 +1,51 @@
+public class Calculator {
+    public static integer adding(integer num1, integer num2) {
+        return num1+num2;
+    }
+    public static integer subtracting(integer num1, integer num2) {
+        return num1-num2;
+    }
+    public static integer multiplying(integer num1, integer num2) {
+        return num1*num2;
+    }
+
+    public static integer dividing(integer num1, integer num2) {
+        return num1/num2;
+    }
+
+}
+@istest
+
+public class Calculator_Test {
+
+//Create test data - mock data
+//Run the actual code with test data
+// use system.Assert methods to check data
+
+    @istest 
+
+    public static void addingTest(){
+       integer result = Calculator.adding(2,2);
+        system.assertEquals (4,result,'These numbers are not equal!');
+}
+
+    @istest 
+
+    public static void subtractingTest(){
+       integer result = Calculator.subtracting(4,2);
+        system.assertEquals (2,result,'These numbers are not equal!');
+}
+@istest 
+
+public static void multiplyingTest(){
+   integer result = Calculator.multiplying(2,2);
+    system.assertEquals (4,result,'These numbers are not equal!');
+}
+@istest 
+
+public static void dividingTest(){
+   integer result = Calculator.dividing(6,2);
+    system.assertEquals (3,result,'These numbers are not equal!');
+}
+
+}
