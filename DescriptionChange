@@ -1,0 +1,55 @@
+public class DescriptionChange {
+    public static void AccDescChange() {
+    
+        //Get all accounts
+    list <Account> accs = [SELECT Description FROM Account];
+    list <Account> newAccs = new List <Account>();
+
+    //Change each account descriptions
+    for (Account a: accs){
+        a.Description = 'Changed';
+        newAccs.add(a);
+
+
+    }
+
+    //Save new updated list to database
+    update newAccs;
+
+    }
+}
+
+Test Example:
+
+@istest
+
+public  class DescriptionChange_Test {
+    @istest 
+
+    public static void accDescChange_Test() {
+
+        // Create mock data
+
+       list<Account> accs = new list<Account>();
+
+        for (Integer i = 0; i < 5; i++) { //Test1, Test2, Test3, Test4
+            Account a = new Account();
+            a.name= 'Test' + i;
+            accs.add(a);
+       }
+     insert accs;
+
+        //Call actual class
+
+    DescriptionChange.AccDescChange();
+ // Assess the result
+
+    list<Account> newAccs = [SELECT Description FROM Account];
+
+    for (Account a : newAccs) {
+        system.assertEquals('Changed', a.Description);
+    }
+
+   system.assertEquals(5, newAccs.size()); 
+}
+}
