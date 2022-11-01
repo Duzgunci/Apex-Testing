@@ -1,0 +1,71 @@
+Test Utility class- Central Repository
+
+It will create and return
+No need to use @istest before method
+
+
+@isTest
+public class TestDataFactory {
+    
+    public static List<Account> createAccounts(Integer num){
+        List<Account> acct = new List<Account>();
+
+        for(Integer i = 0; i<num; i++){
+
+            Account a = new Account();
+            a.Name = 'Test ' + i;
+            acct.add(a);
+        }
+
+        insert acct;
+        return acct;
+    }
+
+    public static List<Contact> createContacts(Integer num){
+        List<Contact> conts = new List<Contact>();
+
+        for(Integer i = 0; i<num; i++){
+
+            Contact c = new Contact();
+            c.Name = 'Test ' + i;
+            conts.add(c);
+        }
+
+        insert conts;
+        return conts;
+
+    }
+}
+
+Mytest class:
+@istest
+public class MyTestClass {
+    @istest
+    public static void factoryTest() {
+        // create 3 account records
+        List<Account> accs = TestDataFactory.createAccounts(100);
+
+        System.assertEquals(100, accs.size());
+
+
+    }
+}
+
+
+Another My test
+@istest
+public class MyTestClass {
+    @istest
+    public static void factoryTest() {
+        // create 3 account records
+        List<Account> accs = TestDataFactory.createAccounts(100);
+
+        System.assertEquals(100, accs.size());
+ system.assertEquals('Test0', accs[0].Name);
+
+        for (Integer i = 0; i < 100; i++) {
+            system.assertEquals('Test' + i, accs[i].Name);
+        }
+
+    }
+}
