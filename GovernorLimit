@@ -1,0 +1,45 @@
+@istest
+
+public  class DescriptionChange_Test {
+    @istest 
+
+    public static void accDescChange_Test() {
+
+        // Create mock data
+
+       list<Account> accs = new list<Account>();
+
+        for (Integer i = 0; i < 5; i++) { //Test1, Test2, Test3, Test4
+            Account a = new Account();
+            a.name= 'Test' + i;
+            accs.add(a);
+       }
+     insert accs;
+
+        //Call actual class
+
+ Test.startTest();
+
+    DescriptionChange.AccDescChange();
+
+    Contact c = new Contact();
+    c.LastName= 'test';
+    insert c;
+    
+    system.assertEquals(1, Limits.getDmlStatements());
+
+    Test.stopTest();
+        // Assess the result
+
+    list<Account> newAccs = [SELECT Description FROM Account];
+   for (Account a : newAccs) {
+        system.assertEquals('Changed', a.Description);
+    }
+
+    system.assertEquals(5, newAccs.size());
+
+
+    system.assertEquals(1, Limits.getDmlStatements());
+
+    }
+}
