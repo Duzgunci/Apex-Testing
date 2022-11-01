@@ -1,0 +1,26 @@
+public class CreateAccount {
+    public static void newAcc(string accName){
+        Account acc = new Account();
+        acc.Name = accName;
+        insert acc;
+
+    }
+}
+
+
+@istest
+public  class CreateAcoount_Test {
+
+    @istest 
+
+    public static void newAccTest(){
+    //Create mock data
+    // Execute target class with mock data
+        CreateAccount.newAcc('My Account');
+    
+    // Use system.assert methods
+  Account newAcc = [SELECT Name FROM Account WHERE Name= 'My Account'];
+        system.assertEquals('My Account', newAcc.Name, 'Account is not correct');
+    }
+}
+=============
