@@ -1,0 +1,29 @@
+@istest
+
+public  class UserTest {
+@istest 
+
+public static void userNewTest(){
+
+    Account a = new Account(Name = 'test');
+    insert a;
+    
+    User u =[SELECT Name FROM User WHERE Name= 'Deniz Duzguncinar'];
+    User t =[SELECT Name FROM User WHERE Name= 'Different User'];
+
+
+    system.runAs(u){
+
+        Account  acc = [SELECT Name FROM Account];
+        System.assertEquals('test', acc.Name);
+    }
+    system.runAs(t){
+
+        Account  acc = [SELECT Name FROM Account];
+        System.assertEquals('new test', acc.Name);
+    }
+
+
+}
+    
+}
